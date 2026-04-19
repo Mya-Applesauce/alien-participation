@@ -107,6 +107,8 @@ class AlienInvasion:
             print("DAMAGE SUSTAINED")
             self._ship_hit()
 
+        self._check_alien_border()
+
     def _update_bullets(self):
         self.bullets.update()
 
@@ -132,6 +134,12 @@ class AlienInvasion:
         self.ship.center_ship()
 
         sleep(0.5)
+
+    def _check_alien_border(self):
+        for alien in self.aliens.sprites():
+            if alien.rect.bottom >= self.settings.screen_height:
+                self._ship_hit()
+                break
 
     def _update_screen(self):
         if self.settings.bg_image == None:
