@@ -96,7 +96,7 @@ class AlienInvasion:
         self.settings.fleet_direction *= -1
 
     def _update_aliens(self):
-        self._check_fleet_edges
+        self._check_fleet_edges()
         self.aliens.update()
 
     def _update_bullets(self):
