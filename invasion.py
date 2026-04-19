@@ -28,15 +28,19 @@ class AlienInvasion:
 
         self._create_fleet()
 
+        self.game_active = True
+
     def run_game(self):
         while True:
             self._check_events()
             self._update_screen()
             pygame.display.flip()
             self.clock.tick(60)
-            self.ship.update()
-            self._update_bullets()
-            self._update_aliens()
+            
+            if self.game_active:
+                self.ship.update()
+                self._update_bullets()
+                self._update_aliens()
 
     def _check_events(self):
         for event in pygame.event.get():
@@ -126,14 +130,17 @@ class AlienInvasion:
             self._create_fleet()
 
     def _ship_hit(self):
-        self.stats.ships_left -= 1
+        if self.stats.ships_left > 0:
+            self.stats.ships_left -= 1
 
-        self.bullets.empty()
-        self.aliens.empty()
-        self._create_fleet()
-        self.ship.center_ship()
+            self.bullets.empty()
+            self.aliens.empty()
+            self._create_fleet()
+            self.ship.center_ship()
 
-        sleep(0.5)
+            sleep(0.5)
+        else:
+            self.game_active = False
 
     def _check_alien_border(self):
         for alien in self.aliens.sprites():
