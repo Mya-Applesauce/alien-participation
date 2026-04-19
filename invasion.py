@@ -108,6 +108,9 @@ class AlienInvasion:
         
         collisions = pygame.sprite.groupcollide(
             self.bullets, self.aliens, True, True)
+        if not self.aliens:
+            self.bullets.empty()
+            self._create_fleet()
 
     def _update_screen(self):
         if self.settings.bg_image == None:
