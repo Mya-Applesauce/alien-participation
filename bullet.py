@@ -8,7 +8,6 @@ class Bullet(Sprite):
         self.settings = alien_game.settings
         self.screen_rect = alien_game.screen.get_rect()
 
-        self.color = self.settings.bullet_color
         self.image = self.settings.bullet_image
 
         self.rect = self.image.get_rect()
