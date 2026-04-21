@@ -9,7 +9,7 @@ class Settings:
         self.bg_image = pygame.image.load("images/space.png")
         
         self.ship_speed = 8
-        self.ship_limit = 3
+        self.ship_limit = 2
 
         self.alien_speed = 2.0
         self.fleet_drop_speed = 10.0
