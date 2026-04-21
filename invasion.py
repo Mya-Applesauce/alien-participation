@@ -28,7 +28,7 @@ class AlienInvasion:
 
         self._create_fleet()
 
-        self.game_active = True
+        self.game_active = False
 
     def run_game(self):
         while True:
