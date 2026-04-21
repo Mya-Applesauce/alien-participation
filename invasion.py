@@ -4,10 +4,11 @@ from time import sleep
 import pygame
 
 from settings import Settings
-from game_stats import GameStats
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+from game_stats import GameStats
+from button import Button
 
 class AlienInvasion:
     def __init__(self):
@@ -28,13 +29,14 @@ class AlienInvasion:
 
         self._create_fleet()
 
+        self.play_button = Button(self)
+
         self.game_active = False
 
     def run_game(self):
         while True:
             self._check_events()
             self._update_screen()
-            pygame.display.flip()
             self.clock.tick(60)
             
             if self.game_active:
@@ -159,6 +161,11 @@ class AlienInvasion:
             bullet.draw_bullet()
 
         self.aliens.draw(self.screen)
+        
+        if not self.game_active:
+            self.play_button.draw_button()
+            
+        pygame.display.flip()
 
 
 if __name__ == '__main__':
