@@ -15,7 +15,7 @@ class Settings:
         self.bullet_image = pygame.image.load("images/bullet.png")
         self.bullets_allowed = 20
 
-        self.speedup_scale = 1.1
+        self.speedup_scale = 1.5
 
         self.initialize_dynamic_settings()
 
@@ -24,6 +24,8 @@ class Settings:
         self.bullet_speed = 5.0
         self.alien_speed = 2.0
         self.fleet_direction = 1
+
+        self.alien_points = 50
 
     def increase_speed(self):
         self.ship_speed *= self.speedup_scale
